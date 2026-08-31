@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stealth Meta Tags for School Filters -->
+    <title>SharkNet | Dashboard</title>
+    <meta name="description" content="SharkNet is a lightweight, responsive web-application framework designed to test proxy-layer protocols and demonstrate asynchronous iframe nesting.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b132b;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Ambient glowing background */
+        .bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 180, 216, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 500px;
+        }
+
+        .logo-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #00b4d8, #90e0ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: #64dfdf;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+        }
+
+        .launch-btn {
+            background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .launch-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.6);
+            background: linear-gradient(135deg, #00c4e8 0%, #0088c6 100%);
+        }
+
+        .launch-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .footer {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #48cae4;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <div class="logo-icon">🦈</div>
+        <h1>SHARKNET</h1>
+        <p>Dive deep past restricted waters.</p>
+        
+        <button class="launch-btn" onclick="launchCloak()">Launch SharkNet</button>
+        
+        <div class="footer">
+            v1.0.0 • Asynchronous Frame Network
+        </div>
+    </div>
+
+    <script>
+        function launchCloak() {
+            // 1. Specify the internal URL or proxy link you want to load inside the blank tab
+            // For now, it points to a blank layout placeholder file, change this to your proxy backend link!
+            const proxyUrl = window.location.href.replace('index.html', '') + 'proxy-loading.html'; 
+
+            // 2. Create the completely blank tab
+            const win = window.open('about:blank', '_blank');
+            
+            if (!win) {
+                alert('Pop-up blocked! Please allow pop-ups for this site to launch the stealth tab.');
+                return;
+            }
+
+            // 3. Configure the document inside the blank tab
+            const doc = win.document;
+            doc.title = "Google Docs"; // Changes tab title to blend in seamlessly
+            
+            // 4. Inject a clean favicon (Google Docs icon) so teachers don't notice the tab
+            const link = doc.createElement('link');
+            link.rel = 'icon';
+            link.type = 'image/x-icon';
+            link.href = 'https://gstatic.com';
+            doc.head.appendChild(link);
+
+            // 5. Create a full-screen, borderless iframe to hold your actual proxy code
+            const iframe = doc.createElement('iframe');
+            iframe.src = proxyUrl;
+            iframe.style.position = 'fixed';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.bottom = '0';
+            iframe.style.right = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            iframe.style.margin = '0';
+            iframe.style.padding = '0';
+            iframe.style.overflow = 'hidden';
+            iframe.style.zIndex = '999999';
+
+            // 6. Push the iframe into the stealth tab
+            doc.body.appendChild(iframe);
+            doc.body.style.margin = '0';
+            doc.body.style.padding = '0';
+        }
+    </script>
+</body>
+</html>
