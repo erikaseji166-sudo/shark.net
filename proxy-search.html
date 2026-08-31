@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharkNet Search</title>
+    <!-- Link to your existing style.css so it matches the home page -->
+    <link rel="stylesheet" href="style.css">
+</style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <div class="logo-icon">🔍</div>
+        <h1>SHARKNET</h1>
+        <p>Enter a URL or search query to browse privately.</p>
+        
+        <!-- Simple unblocker input design -->
+        <div style="display: flex; gap: 10px; width: 100%; justify-content: center;">
+            <input type="text" id="url-input" placeholder="https://example.com or search..." style="padding: 15px 20px; font-size: 1rem; border-radius: 50px; border: 2px solid #00b4d8; background: #132247; color: white; width: 100%; outline: none;">
+            <button class="launch-btn" onclick="goToUrl()" style="padding: 15px 30px; font-size: 1rem;">Go</button>
+        </div>
+        
+        <div class="footer" style="margin-top: 2rem;">
+            Your session is protected inside an active cloak.
+        </div>
+    </div>
+
+    <script>
+        function goToUrl() {
+            let input = document.getElementById('url-input').value.trim();
+            if (!input) return;
+
+            // Simple check: if it doesn't start with http, treat it like a Google search
+            if (!input.startsWith('http://') && !input.startsWith('https://')) {
+                if (input.includes('.') && !input.includes(' ')) {
+                    input = 'https://' + input;
+                } else {
+                    input = 'https://google.com' + encodeURIComponent(input);
+                }
+            }
+            
+            // Redirects this clean iframe tab to your final destination
+            window.location.href = input;
+        }
+    </script>
+</body>
+</html>
