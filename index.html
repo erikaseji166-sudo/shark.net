@@ -25,12 +25,10 @@
             v1.0.0 • Asynchronous Frame Network
         </div>
     </div>
-
     <script>
         function launchCloak() {
-            // 1. Specify the internal URL or proxy link you want to load inside the blank tab
-            // For now, it points to a blank layout placeholder file, change this to your proxy backend link!
-            const proxyUrl = window.location.href.replace('index.html', '') + 'proxy-loading.html'; 
+            // 1. Paste your live Xylara deployment link here!
+            const proxyUrl = "https://162-35-180-41.nip.io/"; 
 
             // 2. Create the completely blank tab
             const win = window.open('about:blank', '_blank');
@@ -51,7 +49,7 @@
             link.href = 'https://gstatic.com';
             doc.head.appendChild(link);
 
-            // 5. Create a full-screen, borderless iframe to hold your actual proxy code
+            // 5. Create a full-screen, borderless iframe to hold Xylara
             const iframe = doc.createElement('iframe');
             iframe.src = proxyUrl;
             iframe.style.position = 'fixed';
